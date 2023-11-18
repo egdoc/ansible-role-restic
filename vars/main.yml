@@ -1,0 +1,3 @@
+---
+restic_home: /var/lib/restic
+restic_config_dir: /etc/restic

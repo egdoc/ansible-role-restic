@@ -1,0 +1,16 @@
+---
+- name: Converge
+  hosts: all
+  pre_tasks:
+    - name: Ensure apt cache is updated
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_facts.os_family | lower == 'debian'
+
+  roles:
+    - role: egdoc.restic
+      restic_repository: /mnt/backup
+      restic_password: testpassword
+      restic_files: 
+        - /etc

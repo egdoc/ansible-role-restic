@@ -1,0 +1,9 @@
+---
+restic_exclude_patterns: []
+restic_one_file_system: false
+restic_backup_timer: daily
+restic_keep_hourly: 0
+restic_keep_daily: 0
+restic_keep_weekly: 0
+restic_keep_monthly: 0
+restic_keep_yearly: 0

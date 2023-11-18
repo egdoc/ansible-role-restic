@@ -1,0 +1,20 @@
+galaxy_info:
+  author: Egidio Docile
+  namespace: egdoc
+  role_name: restic
+  description: Ansible role to install and setup restic
+  license: GPLv3
+  min_ansible_version: '2.1'
+  platforms:
+    - name: Fedora
+      versions: 
+        - '38'
+    - name: Debian
+      versions:
+        - bookworm
+
+  galaxy_tags:
+    - backup
+    - restic
+
+dependencies: []
