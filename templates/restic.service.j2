@@ -23,7 +23,7 @@ ExecStartPost=/usr/bin/restic forget --prune \
   --keep-monthly={{ restic_keep_monthly }} \
   --keep-yearly={{ restic_keep_yearly }}
 
-LockPersonality=true
+LockPersonality=yes
 MemoryDenyWriteExecute=no
 NoNewPrivileges=yes
 PrivateDevices=yes
