@@ -46,6 +46,14 @@
     group: root
     mode: '644'
 
+- name: Ensure backup script is in place
+  ansible.builtin.template:
+    src: restic_backup.sh.j2
+    dest: /usr/local/bin/restic_backup.sh
+    owner: root
+    group: root
+    mode: '755'
+
 - name: Ensure restic service exists
   ansible.builtin.template:
     src: restic.service.j2

@@ -4,7 +4,8 @@ argument_specs:
     short_description: Ansible role to install and configure Restic.
     options:
       restic_repository:
-        type: str
+        type: list
+        elements: str
         required: true
       restic_password:
         type: str

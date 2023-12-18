@@ -7,22 +7,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 User=restic
-Environment="RESTIC_PASSWORD_FILE={{ restic_config_dir }}/password"
-Environment="RESTIC_REPOSITORY={{ restic_repository }}"
-ExecStart=/usr/bin/restic backup \
-{% if restic_one_file_system %}
-  --one-file-system \
-{% endif %}
-  --files-from={{ restic_config_dir }}/files \
-  --exclude-file={{ restic_config_dir }}/exclude_patterns
-
-ExecStartPost=/usr/bin/restic forget --prune \
-  --keep-hourly={{ restic_keep_hourly }} \
-  --keep-daily={{ restic_keep_daily }} \
-  --keep-weekly={{ restic_keep_weekly }} \
-  --keep-monthly={{ restic_keep_monthly }} \
-  --keep-yearly={{ restic_keep_yearly }}
-
+ExecStart=/usr/local/bin/restic_backup.sh
 LockPersonality=yes
 MemoryDenyWriteExecute=no
 NoNewPrivileges=yes

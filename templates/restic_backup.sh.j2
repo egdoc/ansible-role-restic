@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# This script is meant to work with the egdoc.restic ansible role.
+# It is executed by the restic.service unit, and should be located
+# under the /usr/local/bin directory.
+#
+# @author Egidio Docile
+
+set -o nounset
+
+export RESTIC_PASSWORD_FILE="{{ restic_config_dir }}/password"
+
+notify_error=0
+
+{% for repository in restic_repository %}
+echo "Starting backup to the {{ repository }} repository" >&2
+/usr/bin/restic backup \
+  --repo={{ repository }} \
+  --one-file-system={{ restic_one_file_system | bool }} \
+  --files-from={{ restic_config_dir }}/files \
+  --exclude-file={{ restic_config_dir }}/exclude_patterns || notify_error=1
+
+/usr/bin/restic forget --prune \
+  --repo={{ repository }} \
+  --keep-hourly={{ restic_keep_hourly }} \
+  --keep-daily={{ restic_keep_daily }} \
+  --keep-weekly={{ restic_keep_weekly }} \
+  --keep-monthly={{ restic_keep_monthly }} \
+  --keep-yearly={{ restic_keep_yearly }} || notify_error=1
+
+{% endfor %}
+
+exit "${notify_error}"

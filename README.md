@@ -14,7 +14,7 @@ Role Variables
 
 | Variable | Description | Type | Default | Required |
 |----------|-------------|------|---------|----------|
-| restic_repository | The URL/Path of the restic repository | str |  | yes
+| restic_repository | URLs/Paths of restic repositories | list |  | yes
 | restic_password   | The password of the restic resository | str |  | yes
 | restic_files | List of files to be included in the backup | list | | yes
 | restic_exclude_patterns | List of patterns to be excluded form the backup | list | [] | no

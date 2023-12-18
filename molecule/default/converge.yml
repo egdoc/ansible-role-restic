@@ -10,7 +10,8 @@
 
   roles:
     - role: egdoc.restic
-      restic_repository: /mnt/backup
+      restic_repository: 
+        - /mnt/backup
       restic_password: testpassword
       restic_files: 
         - /etc

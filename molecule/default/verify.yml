@@ -1,8 +1,0 @@
----
-- name: Verify
-  hosts: all
-  gather_facts: false
-  tasks:
-    - name: Verify restic.service is valid
-      ansible.builtin.command: systemd-analyze verify /etc/systemd/system/restic.service
-      changed_when: false
