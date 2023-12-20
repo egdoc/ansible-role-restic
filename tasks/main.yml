@@ -55,8 +55,8 @@
     mode: '755'
 
 - name: Ensure restic service exists
-  ansible.builtin.template:
-    src: restic.service.j2
+  ansible.builtin.copy:
+    src: restic.service
     dest: /etc/systemd/system/restic.service
     owner: root
     group: root
